@@ -26,3 +26,8 @@ def signup(request):
     
 #     return render(request, 'common/profile.html')
 
+def page_not_found(request, exception):
+    """
+    404 Page not found
+    """
+    return render(request, 'pages/404.html', {})
