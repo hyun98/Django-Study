@@ -1,0 +1,23 @@
+<header class="header">
+
+    <div class="signForm__wrapper">
+        <form class="signForm" action="{% url 'accounts:login' %}" method="POST">
+            {% csrf_token %}
+            {% if user.is_authenticated %}
+                <a class="signForm--submit input type__logout" href="{% url 'accounts:logout' %}">{{ user.username }}</a>
+            {% else %}
+                <input class="signForm--username input" type="text" placeholder="USERNAME" name="username" value="{{ form.username.value|default_if_none:'' }}">
+                <input class="signForm--password input" type="password" placeholder="PASSWORD" name="password" value="{{ form.password.value|default_if_none:'' }}">
+                <button class="signForm--submit input" type="submit">LOGIN</button>
+                <a class="signForm--submit input type__register" href="{% url 'accounts:signup' %}">REGISTER</a>
+            {% endif %}
+        </form>
+    </div>
+
+    <nav class="header__nav">
+        <a class="nav--itm" href="{% url 'boards:index' %}">MAIN</a>
+        <a class="nav--itm" href="{% url 'boards:essay_list' %}">BOARD</a>
+        <a class="nav--itm" href="/admin">ADMIN</a>
+    </nav>
+
+</header>

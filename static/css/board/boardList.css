@@ -1,0 +1,114 @@
+li{
+    color: rgb(71, 71, 71);
+}
+
+.TITLE{
+    color: rgb(71, 71, 71);
+    width: 30%;
+    box-shadow: 3px 3px 8px rgba(71, 71, 71, 20%);
+    margin: auto;
+    padding: 10px 20px 15px 20px;
+    border-radius: 0px;
+    margin-top: 30px;
+    border: 2px solid rgb(71, 71, 71);
+
+    text-align: center;
+    line-height: 100%;
+
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.boardList__wrapper{
+    margin-top: 50px;
+}
+
+.boardList{
+    width: 80%;
+    margin: auto;
+}
+
+.boardList > a > .boardList__itm{
+    width: 90%;
+    box-shadow: 3px 3px 8px rgba(71, 71, 71, 20%);
+    margin: auto;
+    padding: 10px 20px 20px 20px;
+    border-radius: 0px;
+    margin-top: 30px;
+    border: 2px solid rgb(71, 71, 71);
+    transition: .3s;
+}
+.boardList > a > .boardList__itm:hover{
+    box-shadow: 2px 2px 3px rgba(71, 71, 71, 20%);
+    transition: .3s;
+}
+
+/* USER INFO */
+.boardList__itm.userInfo{
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    margin-top: 5px;
+}
+
+.userInfo--name{
+    color: rgb(71, 71, 71);
+    font-weight: bold;
+}
+
+.userInfo--cartegory{
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.userInfo--time{
+    display: inline-block;
+    font-size: 13px;
+}
+
+/* TEXT INFO */
+.boardList__itm.textInfo{
+    display: inline-block;
+    vertical-align: top;
+    width: 65%;
+}
+
+.textInfo--title{
+    color: rgb(71, 71, 71);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.textInfo--text{
+    font-size: 14px;
+    margin-top: 10px;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+
+.btn__wrapper{
+    width: 80%;
+    margin: auto;
+}
+
+.writeBtn{
+    display: block;
+    width: 15%;
+    height: 50px;
+    border: 2px solid rgb(71, 71, 71);
+    box-shadow: 3px 3px 8px rgba(71, 71, 71, 20%);
+    color: rgb(71, 71, 71);
+    border-radius: 0px; 
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
+    margin: auto;
+    margin-top: 30px;
+}
+.writeBtn:hover{
+    background-color: rgb(71, 71, 71);
+    color: #fff;
+    box-shadow: 2px 2px 3px rgba(71, 71, 71, 20%);
+}

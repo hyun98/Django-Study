@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static '/css/board/boardList.css' %}">
+<div class="container__board">
+
+    <div class="TITLE">
+        BOARD LIST
+    </div>
+
+    <div class="boardList__wrapper">
+        <ul class="boardList">
+            {% if essay_list %}
+                {% for essay in essay_list %}
+                    <a class="boardList--link" href="{% url 'boards:essay_detail' essay.id %}">
+                        <li class="boardList__itm">
+                            <div class="boardList__itm userInfo">
+                                <div class="boardList__itm userInfo--name">{{ essay.author.username }}</div>
+                                <div class="boardList__itm userInfo--category">{{ essay.category }}</div>
+                                <div class="boardList__itm userInfo--time"> | {{ essay.create_date }}</div>
+                            </div>
+                            <div class="boardList__itm textInfo">
+                                <div class="boardList__itm textInfo--title">
+                                    {{ essay.subject }}
+                                </div>
+                                <div class="boardList__itm textInfo--text">
+                                    {{ essay.content }}
+                                </div>
+                            </div>
+                        </li>
+                    </a>
+                {% endfor %}
+            {% else %}
+                <div>
+                    <span>글이 없습니다.</span>
+                </div>
+            {% endif %}
+        </ul>
+    </div>
+
+    <div class="btn__wrapper">
+        <a class="writeBtn" href="{% url 'boards:essay_create' %}">WRITE</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static '/css/board/writeForm.css' %}">
+    <div class="container__writeForm">
+        <div class="write__wrapper">
+            <form class="write" method="POST" action="{% url 'boards:essay_create' %}">
+                {% csrf_token %}
+                <span class="TITLE">WRITE</span>
+                <input class="write__title" name="subject" type="text" placeholder="TITLE"
+                value="{{ form.subject.value|default_if_none:'' }}">
+                <textarea class="write__text" name="content" placeholder="TEXT">
+                {{ form.content.value|default_if_none:'' }}</textarea>
+                <input class="write__submit" type="submit" value="SUBMIT">
+            </form>
+        </div>
+    </div>
+{% endblock %}

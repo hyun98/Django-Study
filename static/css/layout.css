@@ -1,0 +1,74 @@
+*{
+    outline: none; 
+    font-family: 'Noto Sans KR', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: .3s;
+}
+
+body, ul, li, a, hr, button, input, textarea{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+.container{
+    margin: 0px 50px;
+}
+
+.header{
+    height: 32px;
+    padding: 15px 50px;
+    box-shadow: 1px 3px 10px rgba(71, 71, 71, 0.322);
+}
+
+/* SIGN FORM */
+.signForm__wrapper{
+    display: inline-block;
+}
+
+.signForm > .input{
+    vertical-align: top;
+    width: 150px;
+    height: 30px;
+    border-radius: 0;
+    border: 1px solid rgb(71, 71, 71);
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0px 5px;
+}
+
+.signForm--submit.input{
+    height: 32px;
+    width: 100px;
+    border: none;
+    background-color: rgb(71, 71, 71);
+    color: #fff;
+}
+
+.signForm--submit.input.type__register{
+    display: inline-block;
+    text-align: center;
+    line-height: 32px;
+}
+
+.signForm--submit.input.type__logout{
+    display: inline-block;
+    text-align: center;
+    line-height: 32px;
+}
+
+/* NAV */
+.header__nav{
+    display: inline-block;
+    float: right;
+}
+
+.nav--itm{
+    line-height: 32px;
+    margin: 0px 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(71, 71, 71);
+}

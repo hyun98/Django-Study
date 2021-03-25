@@ -1,0 +1,87 @@
+.wrapper{
+    position: relative;
+    display: block;
+    margin: auto;
+    width: 482px;
+    margin-top: 250px;
+}
+
+.logo{
+    display: block;
+    background: url('./img/naver.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 231px;
+    height: 44px;
+    margin: auto;
+    margin-bottom: 53px;
+}
+
+.mail{
+    position: relative;
+    display: block;
+    padding: 0px 10px 0px 10px;
+    width: 460px;
+    height: 48px;
+    border: solid 1px #dadada;
+    margin-bottom: 8px;
+}.mail:focus{
+    border: solid 1px rgb(79, 79, 79);
+}
+
+.id{
+    position: relative;
+    display: block;
+    padding: 0px 10px 0px 10px;
+    width: 460px;
+    height: 48px;
+    border: solid 1px #dadada;
+    margin-bottom: 8px;
+}.id:focus{
+    border: solid 1px rgb(79, 79, 79);
+}
+
+.pd{
+    position: relative;
+    display: block;
+    padding: 0px 10px 0px 10px;
+    width: 460px;
+    height: 48px;
+    border: solid 1px #dadada;
+    margin-bottom: 8px;
+}.pd:focus{
+    border: solid 1px rgb(79, 79, 79);
+}
+
+.send{
+    position: relative;
+    display: block;
+    padding: 0px 10px 0px 10px;
+    width: 482px;
+    height: 56px;
+    background-color: rgb(79, 79, 79);
+    border: solid 1px rgba(0,0,0,.1);
+
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+}
+
+.moveTag{
+    text-decoration: none;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 300;
+    color: rgb(79, 79, 79);
+    position: relative;
+    display: block;
+    width: 460px;
+    height: 40px;
+    padding: 12px 0px 0px 0px;
+    border: solid 1px rgb(79, 79, 79);
+    margin-top: 20px;
+}.moveTag:hover{
+    color: #fff;
+    background-color: rgb(79, 79, 79);
+}

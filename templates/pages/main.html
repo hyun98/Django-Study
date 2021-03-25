@@ -1,0 +1,56 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+    <div class="container__main">
+        <div class="wrapper">
+            {% if user.is_authenticated %}
+                <a href="{% url 'accounts:logout' %}" class="moveTag">{{ user.username }}</a>
+            {% else %}
+                {% comment %} <a href="{% url 'accounts:login' %}" class="moveTag" id="loginTag">LOGIN</a> {% endcomment %}
+            {% endif %}
+            <a href="{% url 'accounts:signup' %}" class="moveTag" id="registerTag">REGISTER</a>
+            <a href="{% url 'boards:essay_list' %}" class="moveTag" id="registerTag">BOARD</a>
+        </div>   
+    </div>
+
+    <style>
+        .wrapper{
+            position: relative;
+            display: block;
+            margin: auto;
+            width: 482px;
+            margin-top: 250px;
+        }
+    
+        .logo{
+            display: block;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 231px;
+            height: 44px;
+            margin: auto;
+            margin-bottom: 53px;
+        }
+    
+        .moveTag{
+            text-decoration: none;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: rgb(71, 71, 71);
+            position: relative;
+            display: block;
+            width: 460px;
+            height: 40px;
+            padding: 12px 0px 0px 0px;
+            border: solid 1px rgb(71, 71, 71);
+            margin: auto;
+            margin-top: 20px;
+        }.moveTag:hover{
+            color: #fff;
+            background-color: rgb(71, 71, 71);
+        }
+    
+    </style>
+{% endblock %}

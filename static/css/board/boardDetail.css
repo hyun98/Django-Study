@@ -1,0 +1,123 @@
+
+.content__footer.divLine{
+    border: 0;
+    background-color: rgb(71, 71, 71);
+    height: 1px;
+}
+
+/* HEADER */
+.content > .content__header{
+    min-height: 100px;
+    border-bottom: 1px solid rgb(71, 71, 71);
+    padding: 10px 0px 20px 0px;
+}
+
+.content__header.info{
+    margin-left: 20px;
+}
+
+.content__header.info--title{
+    color: rgb(71, 71, 71);
+    font-weight: bold;
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.content__header.info__userInfo > div{
+    display: inline-block;
+}
+
+.content__header.info__userInfo--name{font-size: 20px; font-weight: bold; color: rgb(71, 71, 71);}
+.content__header.info__userInfo--cartegory{font-size: 15px;}
+.content__header.info__userInfo--time{font-size: 15px;}
+
+.comment__list__itm .comment__userInfo > .comment__action{
+    margin-left: 20px;
+}
+.comment__action > .comment__action{
+    display: inline-block;
+    color: rgb(71, 71, 71);
+    margin: 0 5px;
+    padding: 1px 0px;
+    border-bottom: 2px solid rgb(71, 71, 71);
+    /* border-right: 1px solid rgb(71, 71, 71); */
+}
+.comment__action.delete{
+    color: rgb(233, 44, 44);
+    border-bottom: 2px solid rgb(233, 44, 44);
+}
+
+/* MAIN */
+.content__main{
+    height: 300px;
+    margin: 10px 20px;
+}
+
+
+/* FOOTER */
+.content > .content__footer{
+    min-height: 300px;
+    margin: 10px 20px;
+}
+
+.comment__list{
+    margin: 10px 0px 20px 20px;
+}
+
+.comment--title{
+    color: rgb(71, 71, 71);
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.comment__userInfo > div{
+    display: inline-block;
+}
+
+.comment__userInfo--name{
+    color: rgb(71, 71, 71);
+    font-weight: bold;
+}
+
+.comment__subList{
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+
+/* WRITE */
+.comment__write{
+    margin: 20px;
+}
+
+.comment__write--text{
+    display: block;
+    float: right;
+    width: 100%;
+    height: 50px;
+    border-radius: 0;
+    border: 1px solid rgb(71, 71, 71);
+    padding: 5px;
+    margin-right: -5px;
+}
+
+.comment__write--send{
+    cursor: pointer;
+    display: block;
+    float: right;
+    margin-top: 10px;
+    margin-right: -5px;
+    width: 200px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 0;
+    border: 1px solid rgb(71, 71, 71);
+    color: rgb(71, 71, 71);
+    transition: .3s;
+}
+.comment__write--send:hover{
+    background-color: rgb(71, 71, 71);
+    color: #fff;
+    transition: .3s;
+}

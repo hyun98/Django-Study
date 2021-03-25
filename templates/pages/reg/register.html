@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static '/css/reg/reg.css' %}">
+    <div class="container__register">
+        <div class="wrapper">
+            <div class="form">
+                <form method="POST">
+                    {% csrf_token %}
+                    {% include "form_errors.html" %}
+                    <input class="mail" name="email" type="email" value="{{ form.email.value|default_if_none:'' }}" placeholder="이메일">
+                    <input class="id" name="username" type="text" value="{{ form.username.value|default_if_none:'' }}" placeholder="아이디">
+                    <input class="pd" name="password1" type="password" value="{{ form.password1.value|default_if_none:'' }}" placeholder="비밀번호">
+                    <input class="pd" name="password2" type="password" value="{{ form.password2.value|default_if_none:'' }}" placeholder="비밀번호 체크">
+                    <input class="send" type="submit" value="회원가입">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock%}
