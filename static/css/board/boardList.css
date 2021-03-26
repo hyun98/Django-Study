@@ -112,3 +112,15 @@ li{
     color: #fff;
     box-shadow: 2px 2px 3px rgba(71, 71, 71, 20%);
 }
+
+@media screen and (min-width: 280px){
+    .writeBtn{
+        width: 35%;
+    }
+}
+
+@media screen and (min-width: 500px){
+    .writeBtn{
+        width: 15%;
+    }
+}

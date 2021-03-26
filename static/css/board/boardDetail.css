@@ -49,7 +49,7 @@
 
 /* MAIN */
 .content__main{
-    height: 300px;
+    min-height: 300px;
     margin: 10px 20px;
 }
 
@@ -120,4 +120,17 @@
     background-color: rgb(71, 71, 71);
     color: #fff;
     transition: .3s;
+}
+
+
+@media screen and (min-width: 280px){
+    .comment__list__itm .comment__userInfo > .comment__action{
+        margin: 0;
+    }
+}
+
+@media screen and (min-width: 440px){
+    .comment__list__itm .comment__userInfo > .comment__action{
+        margin-left: 20px;
+    }
 }

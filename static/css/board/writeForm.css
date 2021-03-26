@@ -44,3 +44,14 @@
     background-color: rgb(79, 79, 79);
     color: #fff;
 }
+
+
+@media screen and (min-width: 280px){
+    .write__title{padding: 0;}
+    .write__text{padding: 0;}
+}
+
+@media screen and (min-width: 500px){
+    .write__title{padding: 0 10px;}
+    .write__text{padding: 0 10px;}
+}

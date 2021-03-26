@@ -2,7 +2,7 @@
     position: relative;
     display: block;
     margin: auto;
-    width: 482px;
+    width: fit-content;
     margin-top: 250px;
 }
 
@@ -84,4 +84,27 @@
 }.moveTag:hover{
     color: #fff;
     background-color: rgb(79, 79, 79);
+}
+
+
+@media screen and (min-width: 280px){
+    .moveTag{
+        width: 60%;
+    }
+
+    .id{width: 100%; padding: 0;}
+    .pd{width: 100%; padding: 0;}
+    .mail{width: 100%; padding: 0;}
+    .send{width: 100%;}
+}
+
+@media screen and (min-width: 500px){
+    .moveTag{
+        width: 460px;
+    }
+
+    .id{width: 460px;}
+    .pd{width: 460px;}
+    .mail{width: 460px;}
+    .send{width: 460px;}
 }

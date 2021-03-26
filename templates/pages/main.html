@@ -18,7 +18,7 @@
             position: relative;
             display: block;
             margin: auto;
-            width: 482px;
+            width: 100%;
             margin-top: 250px;
         }
     
@@ -41,7 +41,7 @@
             color: rgb(71, 71, 71);
             position: relative;
             display: block;
-            width: 460px;
+            width: 60%;
             height: 40px;
             padding: 12px 0px 0px 0px;
             border: solid 1px rgb(71, 71, 71);
@@ -52,5 +52,22 @@
             background-color: rgb(71, 71, 71);
         }
     
+        @media screen and (min-width: 280px){
+            .moveTag{
+                width: 60%;
+            }
+            .wrapper{
+                margin-top: 50px;
+            }
+        }
+
+        @media screen and (min-width: 600px){
+            .moveTag{
+                width: 460px;
+            }
+            .wrapper{
+                margin-top: 200px;
+            }
+        }
     </style>
 {% endblock %}

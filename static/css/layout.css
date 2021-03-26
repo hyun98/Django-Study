@@ -18,7 +18,7 @@ body, ul, li, a, hr, button, input, textarea{
 }
 
 .header{
-    height: 32px;
+    min-height: 32px;
     padding: 15px 50px;
     box-shadow: 1px 3px 10px rgba(71, 71, 71, 0.322);
 }
@@ -71,4 +71,103 @@ body, ul, li, a, hr, button, input, textarea{
     font-size: 20px;
     font-weight: bold;
     color: rgb(71, 71, 71);
+}
+
+@media screen and (min-width: 280px){
+    .container{
+        margin: 0px 5px;
+    }
+
+    .header {
+        height: auto;
+        padding: 15px 15px;
+    }
+
+    .signForm > .input {
+        width: 100%;
+        padding: 0;
+        margin: 5px 0px;
+    }
+    
+    .signForm--submit.input {
+        width: 100%;
+    }
+
+    .header__nav{
+        width: fit-content;
+        display: block;
+        float: none;
+        margin: auto;
+    }
+    .nav--itm{
+        margin: 0px 5px;
+    }
+}
+
+@media screen and (min-width: 500px){
+    .signForm__wrapper{
+        width: 65%;
+    }
+    .header {
+        height: auto;
+        padding: 15px 15px;
+    }
+
+    .signForm > .input {
+        width: 23%;
+        padding: 0 5px;
+        margin: 5px 0px;
+    }
+    
+    .signForm--submit.input {
+        width: 20%;
+        font-size: 13px;
+    }
+
+    .header__nav{
+        width: 30%;
+        display: inline-block;
+        float: right;
+    }
+    .nav--itm{
+        font-size: 15px;
+        margin: 0px 0px;
+        line-height: 43px;
+    }
+}
+
+@media screen and (min-width: 1000px){
+    .container{
+        margin: 0px 50px;
+    }
+
+    .signForm__wrapper{
+        width: 65%;
+    }
+    .header {
+        height: auto;
+        padding: 15px 15px;
+    }
+
+    .signForm > .input {
+        width: 23%;
+        padding: 0 5px;
+        margin: 5px 0px;
+    }
+    
+    .signForm--submit.input {
+        width: 20%;
+        font-size: 15px;
+    }
+
+    .header__nav{
+        width: 30%;
+        display: inline-block;
+        float: right;
+    }
+    .nav--itm{
+        line-height: 40px;
+        margin: 0px 10px;
+        font-size: 20px;
+    }
 }

@@ -23,6 +23,12 @@
                                 <div class="boardList__itm textInfo--title">
                                     {{ essay.subject }}
                                 </div>
+                                {% if essay.answer_set.count > 0 %}
+                                    <div class="boardList__itm textInfo--title">
+                                        [{{ essay.answer_set.count }}]
+                                    </div>
+                                {% endif %}
+                                
                                 <div class="boardList__itm textInfo--text">
                                     {{ essay.content }}
                                 </div>
@@ -41,5 +47,6 @@
     <div class="btn__wrapper">
         <a class="writeBtn" href="{% url 'boards:essay_create' %}">WRITE</a>
     </div>
+    <p></p>
 </div>
 {% endblock %}
