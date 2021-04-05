@@ -11,10 +11,16 @@
                 <div class="content__header">
                     <div class="content__header info">
                         <div class="content__header info--title">{{essay.subject}}</div>
+                        <div class="content__header comment__action">
+                            <a class="comment__action like" href="{% url 'boards:like_essay' essay.id %} ">LIKE {{ essay.like_users.count }}</a>
+                            {% if request.user == essay.author %}
+                            <a class="comment__action edit" href="{% url 'boards:essay_modify' essay.id %}">EDIT</a>
+                            <a class="comment__action delete" href="{% url 'boards:essay_delete' essay.id %}">DELETE</a>
+                            {% endif %}
+                        </div>
                         <div class="content__header info__userInfo">
                             <div class="content__header info__userInfo--name">{{ essay.author.userID }}</div>
-                            <a class="content__header info__userInfo--name" 
-                            href="{% url 'boards:like_essay' essay.id %} ">{{ essay.like_users.count }}</div>
+                            
                             <div class="content__header info__userInfo--cartegory">{{ essay.category }} |</div>
                             <div class="content__header info__userInfo--time"> {{ essay.create_date }}</div>
                         </div>
@@ -46,6 +52,13 @@
                                                 </div>
                                             </div>
                                             <div class="comment__list__itm comment--text">{{ answer.content }}</div>
+                                            <div class="comment__write__wrapper">
+                                                <form class="comment__write" method="POST" action="{% url 'boards:answer_modify' answer.id %}">
+                                                    {% csrf_token %}
+                                                    <input class="comment__write--text" name="content" type="text" >
+                                                    <input class="comment__write--send" type="submit" value="SUBMIT">
+                                                </form>
+                                            </div>
                                         </li>
                                     {% endfor %}
                                 </ul>
@@ -55,7 +68,7 @@
                             <div class="comment__write__wrapper">
                                 <form class="comment__write" method="POST" action="{% url 'boards:answer_create' essay.id %}">
                                     {% csrf_token %}
-                                    <input class="comment__write--text" name="content" type="text">
+                                    <input class="comment__write--text" name="content" type="text" >
                                     <input class="comment__write--send" type="submit" value="SUBMIT">
                                 </form>
                             </div>

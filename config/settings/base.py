@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+# 기존 settings.py 파일의 위치는 /projects/BStudy/config인데 
+# base.py 파일의 위치는 /projects/BStudy/config/settings로 디렉터리가 더 깊어졌기 때문에 
+# .parent를 한 번 더 사용하여 BASE_DIR을 설정했다. C:/projects/BStudy/config/settings/base.py에서 
+# 총 세번의 .parent가 사용되었으므로 BASE_DIR은 결국 C:/projects/BStudy가 될 것이다.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 

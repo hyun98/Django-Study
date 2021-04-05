@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{% static '/css/board/writeForm.css' %}">
     <div class="container__writeForm">
         <div class="write__wrapper">
-            <form class="write" method="POST" action="{% url 'boards:essay_create' %}">
+            <form class="write" method="POST">
                 {% csrf_token %}
                 <span class="TITLE">WRITE</span>
                 <input class="write__title" name="subject" type="text" placeholder="TITLE"

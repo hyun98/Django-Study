@@ -1,3 +1,4 @@
+from django.core import paginator
 from django.shortcuts import render
 
 from django.http import HttpResponse
@@ -8,6 +9,8 @@ from .forms import EssayForm, AnswerForm
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.core.paginator import Paginator
+from django.db.models import Q
 
 def index(request):
     return render(request, 'pages/main.html')
@@ -16,9 +19,27 @@ def Essay_list(request):
     """
     글 목록 출력
     """
-    essay_list = Essay.objects.order_by('-create_date')
+     # 입력 파라미터
+    page = request.GET.get('page', '1')  # 페이지
+    kw = request.GET.get('kw', '')  # 검색어
 
-    context = {'essay_list': essay_list}
+    # 조회
+    # subject__contains=kw 대신 subject__icontains=kw을 사용하면 대소문자를 가리지 않고 찾아 준다.
+    essay_list = Essay.objects.order_by('-create_date')
+    if kw:
+        essay_list =essay_list.filter(
+            Q(subject__icontains=kw) |  # 제목검색
+            Q(content__icontains=kw) |  # 내용검색
+            Q(author__username__icontains=kw) |  # 질문 글쓴이검색
+            Q(answer__author__username__icontains=kw)  # 답변 글쓴이검색
+        ).distinct()
+
+    # page = request.Get.get('page', '1')
+    # essay_list = Essay.objects.order_by('-create_date')
+    paginator = Paginator(essay_list, 10)
+    page_obj = paginator.get_page(page)
+
+    context = {'essay_list': page_obj, 'page':page, 'kw':kw}
     return render(request, 'pages/board/boardList.html', context)
 
 def Essay_detail(request, essay_id):
@@ -53,7 +74,7 @@ def answer_create(request, essay_id):
 
 @login_required(login_url='accounts:login')
 def Essay_create(request):
-    """ board 질문등록"""
+    """ board 글 등록"""
     if request.method == 'POST':
         form = EssayForm(request.POST)
         if form.is_valid():
@@ -107,7 +128,7 @@ def essay_delete(request, essay_id):
     
 
 @login_required(login_url='accounts:login')
-def answer_modify(request, essay_id):
+def answer_modify(request, answer_id):
     """
     게시판 댓글 수정
     """
@@ -115,7 +136,7 @@ def answer_modify(request, essay_id):
     
     if request.user != answer.author:
         messages.error(request, "수정 권한이 없습니다")
-        return redirect('boards:essay_detail', answer_id=answer.id)
+        return redirect('boards:essay_detail', essay_id=answer.essay.id)
     
     if request.method == "POST":
         form = AnswerForm(request.POST, instance=answer)
@@ -124,7 +145,7 @@ def answer_modify(request, essay_id):
             answer.author = request.user
             # essay.modify_date = timezone.now()
             answer.save()
-            return redirect('boards:essay_detail', essay=essay.id)
+            return redirect('boards:essay_detail', essay_id=answer.essay.id)
     else:
         form = AnswerForm(instance=answer)
     context = {'form': form}
@@ -154,3 +175,14 @@ def like_essay(request, essay_id):
         essay.like_users.add(request.user)
     
     return redirect('boards:essay_detail', essay_id=essay.id)
+    
+@login_required(login_url='accounts:login')
+def like_answer(request, answer_id):
+    """댓글 좋아요 기능"""
+    answer = get_object_or_404(Answer, id=answer_id)
+    if request.user in answer.like_users.all():
+        answer.like_users.remove(request.user)
+    else:
+        answer.like_users.add(request.user)
+    
+    return redirect('boards:essay_detail', essay_id=answer.essay.id)
