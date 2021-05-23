@@ -11,7 +11,6 @@ class Essay(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.TextField(blank=True)
     like_users = models.ManyToManyField(User, related_name="like_posts", blank=True)
-    
 
     def __str__(self):
         return self.subject

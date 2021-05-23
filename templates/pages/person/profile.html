@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+{% comment %} <link rel="stylesheet" href="{% static '/css/board/boardList.css' %}"> {% endcomment %}
+<div class="container__board">
+
+    <div class="TITLE">
+        {{ person.username }}
+    <li class="comment__list__itm">
+        <div class="comment__list__itm comment__userInfo">
+            <div class="comment__userInfo--time">닉네임 : {{ person.nickname }}</div>
+            <div class="comment__action">
+                <a class="comment__action like" href="{% url 'accounts:follow' person.username %}">Followers : {{ person.followers.count }}</a>
+                <br><a class="comment__action like" href="#">Followings : {{ person.followings.count }}</a>
+                <br><a class="comment__action edit" href="#">EDIT</a>
+            </div>
+        </div>
+        <div class="comment__list__itm comment--text">{{ person.description }}</div>
+    </li>
+    <p></p>
+</div>
+{% endblock %}

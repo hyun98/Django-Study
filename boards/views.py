@@ -50,7 +50,7 @@ def Essay_detail(request, essay_id):
     context = {"essay": essay}
     return render(request, 'pages/board/boardDetail.html', context)
 
-# '애너테이션' 이라고 함
+# '@ : 애너테이션' 이라고 함
 # @login_required 애너테이션을 통해 로그인이 되었는지를 우선 검사함
 @login_required(login_url='accounts:login')
 def answer_create(request, essay_id):
@@ -162,8 +162,6 @@ def answer_delete(request, answer_id):
         return redirect('boards:essay_detail', answer_id=answer.id)
     answer.delete()
     return redirect('boards:essay_detail', answer.essay.id)
-
-
 
 @login_required(login_url='accounts:login')
 def like_essay(request, essay_id):

@@ -1,10 +1,11 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from accounts.forms import UserForm
+from accounts.forms import *
 from .models import Profile
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user_model
 
 def signup(request):
     """
@@ -17,16 +18,21 @@ def signup(request):
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
+            profile = Profile()
+            profile.user = user
+            profile.save()
             login(request, user)
             return redirect('boards:index')
     else:
         form = UserForm()
     return render(request, 'pages/reg/register.html', {'form': form})
 
+
 def people(request, username): # urls.py에서 넘겨준 인자를 username으로 받는다.
     person = get_object_or_404(get_user_model(), username=username)
-    return render(request, 'pages/board/boardList.html')
-    # return render(request, 'pages/board/boardList.html', {'person': person})
+    
+    return render(request, 'pages/person/profile.html', {'person': person})
+
 
 @login_required(login_url='accounts:login')
 def profile_modify(request):
@@ -47,6 +53,7 @@ def profile_modify(request):
         # User 모델에 새로운 인스턴스가 생성된다고 해서 그에 매칭되는 Profile 인스턴스가 생성되는 것은 아니기 때문에
         # 매칭되는 Profile 인스턴스가 있다면 그것을 가져오고, 아니면 새로 생성하도록 한다.
         profile_form = ProfileForm(instance=profile)
+        # 아직 profile_modify.html 이 완성되지 않음
         return render(request, 'accounts/profile_modify.html', {
             'user_change_form': user_change_form,
             'profile_form': profile_form
@@ -61,12 +68,19 @@ def page_not_found(request, exception):
 
 @login_required(login_url='accounts:login')
 def follow(request, username):
+    # 로그인한 유저 : user
+    # 팔로우 대상 유저 : follow_user
+    # user = get_object_or_404(get_user_model(), username=request.user.username)
     user = request.user
-    follow_user = get_object_or_404(request.user, username=username)
+    print(user.username)
+    follow_user = get_object_or_404(get_user_model(), username=username)
+    print(follow_user.followers.count())
+    print(follow_user.username)
     if user in follow_user.followers.all():
-        user.followings.remove(follow_user)
-        # follow_user.followers.remove(user)
+        user.profile.followings.remove(follow_user)
+        print("del..")
+        # follow_user.followings.remove(user)
     else:
-        user.followings.add(follow_user)
-        # follow_user.followers.add(user)
-    return redirect('people', username)
+        user.profile.followings.add(follow_user)
+        # follow_user.followings.add(user)
+    return redirect('accounts:people', username)

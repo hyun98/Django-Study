@@ -19,7 +19,7 @@
                             {% endif %}
                         </div>
                         <div class="content__header info__userInfo">
-                            <div class="content__header info__userInfo--name">{{ essay.author.userID }}</div>
+                            <a class="content__header info__userInfo--name" href="{% url 'accounts:people' essay.author.username %}">{{ essay.author.username }}</a>
                             
                             <div class="content__header info__userInfo--cartegory">{{ essay.category }} |</div>
                             <div class="content__header info__userInfo--time"> {{ essay.create_date }}</div>
@@ -43,7 +43,7 @@
                                     {% for answer in essay.answer_set.all %}
                                         <li class="comment__list__itm">
                                             <div class="comment__list__itm comment__userInfo">
-                                                <div class="comment__userInfo--name">{{ answer.author.username }}</div>
+                                                <a class="comment__userInfo--name" href="{% url 'accounts:people' answer.author.username %}">{{ answer.author.username }}</a>
                                                 <div class="comment__userInfo--time">{{ answer.create_date }}</div>
                                                 <div class="comment__action">
                                                     <a class="comment__action like" href="">LIKE</a>
